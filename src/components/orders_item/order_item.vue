@@ -289,6 +289,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .holdEmail {
   text-align: left;
+  margin-top: 18px;
 }
 .close {
   border: none;
