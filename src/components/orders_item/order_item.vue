@@ -328,6 +328,8 @@ export default {
           this.errorMsg2 = "";
           alert("Location updated successfully");
           console.log(response);
+          this.sellerCity = "";
+          this.sellerState = "";
         })
         .catch((error) => {
           this.loading = false;
