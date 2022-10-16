@@ -260,29 +260,29 @@ export default {
         freight_value: this.Freight_Values,
       };
       console.log(editDetails);
-      axios
-        .put(
-          "https://simplebks-api.herokuapp.com/api/v1/order_items/6d953888a914b67350d5bc4d48f2acab",
-          {
-            shipping_limit_date: this.Shipping_Limit_Dates,
-            price: this.Prices,
-            freight_value: this.Freight_Values,
-          },
-          {
-            headers: {
-              "content-type": "text/json",
-              Authorization:
-                "Basic " +
-                btoa(
-                  unescape(
-                    encodeURIComponent(
-                      "3442f8959a84dea7ee197c632cb2df15" + ":" + "13023"
-                    )
-                  )
-                ),
-            },
-          }
-        )
+      const options = {
+        url: "https://simplebks-api.herokuapp.com/api/v1/order_items/6d953888a914b67350d5bc4d48f2acab",
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+          Authorization:
+            "Basic " +
+            btoa(
+              unescape(
+                encodeURIComponent(
+                  "3442f8959a84dea7ee197c632cb2df15" + ":" + "13023"
+                )
+              )
+            ),
+        },
+        data: {
+          shipping_limit_date: this.Shipping_Limit_Dates,
+          price: this.Prices,
+          freight_value: this.Freight_Values,
+        },
+      };
+      axios(options)
         .then((response) => {
           this.loading = false;
           this.errorMsg = "";
