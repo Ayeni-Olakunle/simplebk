@@ -262,8 +262,12 @@ export default {
       console.log(editDetails);
       axios
         .put(
-          `https://simplebks-api.herokuapp.com/api/v1/order_items/${this.indexId}`,
-          editDetails,
+          "https://simplebks-api.herokuapp.com/api/v1/order_items/6d953888a914b67350d5bc4d48f2acab",
+          {
+            shipping_limit_date: this.Shipping_Limit_Dates,
+            price: this.Prices,
+            freight_value: this.Freight_Values,
+          },
           {
             headers: {
               "content-type": "text/json",
@@ -296,30 +300,29 @@ export default {
     handleLocation() {
       this.loading = true;
       this.isActive2 = false;
-      const editLoacation = {
-        seller_city: this.sellerCity,
-        seller_state: this.sellerState,
+      const options = {
+        url: "https://simplebks-api.herokuapp.com/api/auth/account",
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+          Authorization:
+            "Basic " +
+            btoa(
+              unescape(
+                encodeURIComponent(
+                  "3442f8959a84dea7ee197c632cb2df15" + ":" + "13023"
+                )
+              )
+            ),
+        },
+        data: {
+          seller_city: this.sellerCity,
+          seller_state: this.sellerState,
+        },
       };
-      console.log(editLoacation);
-      axios
-        .patch(
-          "https://simplebks-api.herokuapp.com/api/auth/account",
-          editLoacation,
-          {
-            headers: {
-              "content-type": "text/json",
-              Authorization:
-                "Basic " +
-                btoa(
-                  unescape(
-                    encodeURIComponent(
-                      "3442f8959a84dea7ee197c632cb2df15" + ":" + "13023"
-                    )
-                  )
-                ),
-            },
-          }
-        )
+
+      axios(options)
         .then((response) => {
           this.loading = false;
           this.errorMsg2 = "";
