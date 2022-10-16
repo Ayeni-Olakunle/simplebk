@@ -237,7 +237,6 @@ export default {
           }
         )
         .then((response) => {
-          console.log(response.data.freight_value);
           this.freight_value = response.data.freight_value;
           this.shipping_limit_date = response.data.shipping_limit_date;
           this.price = response.data.price;
