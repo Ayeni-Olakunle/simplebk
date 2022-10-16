@@ -264,12 +264,12 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
 }
 .submitButin {
-  margin: 10px 0;
+  margin: 2em 0px 24px 0px;
   width: 100%;
   padding: 13px 0;
   background-color: orange;
-  color: white;
-  font-size: 20px;
+  color: #fff;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -280,12 +280,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .emailInput {
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   border-radius: 5px;
   outline: none;
-  border: 2px solid #c4c4c4;
+  border: 1.5px solid #c4c4c4;
   margin-top: 10px;
-  margin-bottom: 20px;
   font-size: 15px;
 }
 .holdEmail {
@@ -294,7 +293,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .close {
   border: none;
   background-color: white;
-  font-size: 25px;
+  font-size: 20px;
 }
 .textDetail {
   display: flex;
@@ -305,7 +304,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 h5 {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bolder;
 }
 .modalWhite {
