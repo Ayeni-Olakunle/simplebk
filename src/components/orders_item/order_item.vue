@@ -327,21 +327,21 @@ h5 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .image {
-  width: 195px;
+  width: 160px;
   margin: 0 20px;
 }
 
 .settingButin {
-  padding: 12px 31px;
+  padding: 10px 25px;
   background-color: orange;
   border: none;
-  color: white;
-  font-size: 17px;
+  color: #fff;
+  font-size: 15px;
   border-radius: 5px;
-  margin: 20px;
+  margin: 10px 30px;
 }
 
 .holdItem {
@@ -368,11 +368,12 @@ h5 {
 
 h1 {
   text-align: left;
-  width: 44%;
+  width: 40%;
+  font-size: 22px;
 }
 
 h4 {
-  font-size: 25px;
+  font-size: 20px;
   margin: 0;
 }
 
@@ -381,18 +382,18 @@ h4 {
 }
 
 p {
-  font-size: 22px;
+  font-size: 17px;
   color: orange;
   font-weight: bolder;
-  margin: 10px 0px;
+  margin: 7px 0;
 }
 
 .edit {
-  padding: 8px 30px;
+  padding: 6px 20px;
   border: none;
   background-color: #1565c0;
-  color: white;
-  font-size: 17px;
+  color: #fff;
+  font-size: 13px;
   border-radius: 5px;
   cursor: pointer;
 }
