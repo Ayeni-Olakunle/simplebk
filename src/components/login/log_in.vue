@@ -74,8 +74,6 @@ export default {
         )
         .then((response) => {
           this.loading = false;
-          sessionStorage.setItem("username", this.userName);
-          sessionStorage.setItem("password", this.password);
           this.$router.push("/order-items");
           console.log(response);
         })

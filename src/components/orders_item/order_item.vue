@@ -11,7 +11,75 @@
           <h4>{{ item.product_category }}</h4>
           <p>₦{{ item.price }}</p>
         </div>
-        <button class="edit" @click="modalToggle(item.id)">Edit</button>
+        <div>
+          <button class="edit" @click="modalToggle(item.id)">Edit</button>
+          <button class="edit" @click="modalDetails(item.id)">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-if="isActive3">
+    <div class="modal">
+      <div class="modalWhite">
+        <div class="textDetail">
+          <h5 class="modal-title">Product Details</h5>
+          <button type="button" class="close" @click="modalDetails">X</button>
+        </div>
+        <div class="modal-body">
+          <Form @submit.prevent="handleEdit">
+            <div class="holdEmail">
+              <label for="emailAdd">Order Item ID</label><br />
+              <input
+                type="text"
+                name="emailAdd"
+                class="emailInput"
+                v-model="order_item_id"
+                disabled
+              />
+            </div>
+            <div class="holdEmail">
+              <label for="emailAdd">Seller ID</label><br />
+              <input
+                type="text"
+                name="emailAdd"
+                class="emailInput"
+                v-model="seller_id"
+                disabled
+              />
+            </div>
+            <div class="holdEmail">
+              <label for="emailAdd">Shipping Limit Date</label><br />
+              <input
+                type="text"
+                name="emailAdd"
+                class="emailInput"
+                v-model="shipping_limit_date"
+                disabled
+              />
+            </div>
+            <div class="holdEmail">
+              <label for="emailAdd">Price</label><br />
+              <input
+                type="text"
+                name="emailAdd"
+                class="emailInput"
+                v-model="price"
+                disabled
+              />
+            </div>
+            <div class="holdEmail">
+              <label for="emailAdd">Freight Value</label><br />
+              <input
+                type="text"
+                name="emailAdd"
+                class="emailInput"
+                v-model="freight_value"
+                disabled
+              />
+            </div>
+          </Form>
+          <p class="err">{{ errorMsg }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -122,12 +190,20 @@ export default {
       errorMsg2: "",
       isActive: false,
       isActive2: false,
+      isActive3: false,
       indexId: "",
       Freight_Values: "",
       Prices: "",
       Shipping_Limit_Dates: "",
       sellerCity: "",
       sellerState: "",
+      order_id: "",
+      order_item_id: "",
+      product_id: "",
+      seller_id: "",
+      shipping_limit_date: "",
+      price: "",
+      freight_value: "",
       dataArray: [],
     };
   },
@@ -138,6 +214,40 @@ export default {
     modalToggle(index) {
       this.indexId = index;
       this.isActive = !this.isActive;
+    },
+    modalDetails(index) {
+      this.indexId = index;
+      this.isActive3 = !this.isActive3;
+      axios
+        .get(
+          `https://simplebks-api.herokuapp.com/api/v1/order_items/${this.indexId}`,
+          {
+            headers: {
+              "content-type": "text/json",
+              Authorization:
+                "Basic " +
+                btoa(
+                  unescape(
+                    encodeURIComponent(
+                      "3442f8959a84dea7ee197c632cb2df15" + ":" + "13023"
+                    )
+                  )
+                ),
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data.freight_value);
+          this.freight_value = response.data.freight_value;
+          this.shipping_limit_date = response.data.shipping_limit_date;
+          this.price = response.data.price;
+          this.seller_id = response.data.seller_id;
+          this.order_item_id = response.data.order_item_id;
+        })
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
     },
     modalToggle2() {
       this.isActive2 = !this.isActive2;
@@ -153,7 +263,7 @@ export default {
       console.log(editDetails);
       axios
         .put(
-          `https://simplebks-api.herokuapp.com/api/v1/order_items/6d953888a914b67350d5bc4d48f2acab`,
+          `https://simplebks-api.herokuapp.com/api/v1/order_items/${this.indexId}`,
           editDetails,
           {
             headers: {
@@ -194,7 +304,7 @@ export default {
       console.log(editLoacation);
       axios
         .patch(
-          `https://simplebks-api.herokuapp.com/api/auth/account`,
+          "https://simplebks-api.herokuapp.com/api/auth/account",
           editLoacation,
           {
             headers: {
@@ -396,5 +506,6 @@ p {
   font-size: 13px;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 </style>
