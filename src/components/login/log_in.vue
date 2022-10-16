@@ -107,41 +107,41 @@ export default {
 }
 
 .emailInput {
-  width: 92%;
-  padding: 15px;
+  width: 100%;
+  padding: 10px;
   border-radius: 5px;
   outline: none;
-  border: 2px solid #c4c4c4;
+  border: 1.5px solid #c4c4c4;
   margin-top: 10px;
   font-size: 15px;
 }
 
 .holdEmail {
   text-align: left;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .holdSignin {
   text-align: center;
 }
 h2 {
-  font-size: 18px;
-  margin: 2em 0;
+  font-size: 15px;
+  margin: 1em;
 }
 .holdSecond {
-  width: 27%;
+  width: 33%;
   box-shadow: 5px 5px 5px #ebebeb, -5px -5px 5px #ebebeb;
   padding: 2em;
   border-radius: 3em;
 }
 
 .submitButin {
-  margin: 2em 0;
+  margin: 2em 0px 24px 0px;
   width: 100%;
-  padding: 17px 0;
+  padding: 13px 0;
   background-color: orange;
-  color: white;
-  font-size: 20px;
+  color: #fff;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
