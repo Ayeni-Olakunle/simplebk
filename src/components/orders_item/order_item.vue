@@ -254,14 +254,8 @@ export default {
     handleEdit() {
       this.loading = true;
       this.isActive = false;
-      const editDetails = {
-        shipping_limit_date: this.Shipping_Limit_Dates,
-        price: this.Prices,
-        freight_value: this.Freight_Values,
-      };
-      console.log(editDetails);
       const options = {
-        url: "https://simplebks-api.herokuapp.com/api/v1/order_items/6d953888a914b67350d5bc4d48f2acab",
+        url: `https://simplebks-api.herokuapp.com/api/v1/order_items/${this.indexId}`,
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -296,6 +290,9 @@ export default {
           this.errorMsg = error.message;
           console.error("There was an error!", error);
         });
+      this.Shipping_Limit_Dates = "";
+      this.Prices = "";
+      this.Freight_Values = "";
     },
     handleLocation() {
       this.loading = true;
